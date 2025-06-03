@@ -17,6 +17,7 @@ import os
 from datetime import datetime
 import hashlib
 import secrets
+import base64
 from cryptography.fernet import Fernet
 from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
@@ -71,7 +72,7 @@ class SecurityLayer:
         )
         return base64.urlsafe_b64encode(kdf.derive(key))
 
-    def encrypt_data(self, data: bytes) -> Tuple[bytes, bytes]:
+    def encrypt_data(self, data: bytes) -> Tuple[bytes, bytes, bytes]:
         """Encrypt data using AES-256-GCM"""
         iv = secrets.token_bytes(16)
         cipher = Cipher(
@@ -81,7 +82,9 @@ class SecurityLayer:
         )
         encryptor = cipher.encryptor()
         ciphertext = encryptor.update(data) + encryptor.finalize()
-        return ciphertext, encryptor.tag
+        # store IV for potential later use
+        self.iv = iv
+        return ciphertext, encryptor.tag, iv
 
     def decrypt_data(self, ciphertext: bytes, tag: bytes, iv: bytes) -> bytes:
         """Decrypt data using AES-256-GCM"""
@@ -460,6 +463,10 @@ class UnifiedQuantumMind:
         # Initialize quantum memory with encryption
         self.quantum_memory = np.random.randn(2000, 2048)
         self.memory_weights = np.random.randn(2048, 2048)
+        # placeholders for encryption metadata
+        self.encrypted_memory = None
+        self.memory_tag = None
+        self.memory_iv = None
         self._encrypt_memory()
         
         # Initialize tools with security checks
@@ -480,14 +487,18 @@ class UnifiedQuantumMind:
     def _encrypt_memory(self):
         """Encrypt quantum memory for enhanced security"""
         memory_bytes = self.quantum_memory.tobytes()
-        self.encrypted_memory, self.memory_tag = self.security_layer.encrypt_data(memory_bytes)
+        (
+            self.encrypted_memory,
+            self.memory_tag,
+            self.memory_iv,
+        ) = self.security_layer.encrypt_data(memory_bytes)
         
     def _decrypt_memory(self):
         """Decrypt quantum memory when needed"""
         memory_bytes = self.security_layer.decrypt_data(
             self.encrypted_memory,
             self.memory_tag,
-            self.security_layer.iv
+            self.memory_iv
         )
         self.quantum_memory = np.frombuffer(memory_bytes, dtype=np.float64).reshape(2000, 2048)
         
