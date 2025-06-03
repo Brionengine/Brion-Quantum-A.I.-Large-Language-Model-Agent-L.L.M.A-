@@ -110,7 +110,7 @@ $ python main.py
 
 2. Add an entry‑point in registry.yaml.
 
-3. Run python tools/build.py --reload to auto‑wire dependencies.
+3. Verify that new modules are listed in `registry.yaml` so dependencies are wired correctly.
 
 
 🤝 Contributing
