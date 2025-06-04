@@ -21,6 +21,7 @@
 
 1. ⚙️ Install dependencies: `pip install -r requirements.txt` 💻
 2. 🚀 Run the system: `python core/quantum_asi_update.py` 🚀
+   - This command starts the `MorningStarQuantumASI` upgrade loop.
 
 ## Contributors 👥🌟🏆
 
