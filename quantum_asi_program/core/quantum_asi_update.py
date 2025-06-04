@@ -125,5 +125,5 @@ class MorningStarQuantumASI:
 
 # Example Usage
 if __name__ == "__main__":
-    quantum_asi = GodModeQuantumASI(repo_dir="./tech_repo")
+    quantum_asi = MorningStarQuantumASI(repo_dir="./tech_repo")
     quantum_asi.infinite_cycle()
