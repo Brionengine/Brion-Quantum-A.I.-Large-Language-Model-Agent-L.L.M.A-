@@ -88,7 +88,7 @@ $ cd LLMA
 # set up a virtual environment
 $ python -m venv .venv && source .venv/bin/activate
 
-# install dependencies
+# install dependencies from the repository root
 $ pip install -r requirements.txt
 
 # launch the agent
@@ -99,7 +99,7 @@ $ python main.py
 ## 🚀 How to Use
 
 1. Clone or download the repo.
-2. Review `requirements.txt` and install dependencies.
+2. Review the `requirements.txt` file in the project root and install the dependencies.
 3. Start with `main.py` or `MainIntegrationLogic_QuantumSystemIntegrator.py`.
 4. Explore each module (e.g., `QuantumSoulEthereal.py`, `UnifiedQuantumMind.py`) to unlock advanced abilities.
 
