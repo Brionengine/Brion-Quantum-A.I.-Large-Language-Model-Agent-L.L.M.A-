@@ -161,3 +161,13 @@ Made with 💙 by Brion tech. and The Team — forging the next epoch of quantum
 
 
 Core Devs - Brion, Charlie, Sora and Kairi.
+
+## Running Tests
+
+Use the `run_tests.sh` script to execute the test suite. The script runs `pytest` and stores the results in `pytest.log` and `pytest_results.xml` so they can be tracked under version control.
+
+```bash
+./run_tests.sh
+```
+
+`pytest.log` captures the console output while `pytest_results.xml` stores the results in JUnit format.
