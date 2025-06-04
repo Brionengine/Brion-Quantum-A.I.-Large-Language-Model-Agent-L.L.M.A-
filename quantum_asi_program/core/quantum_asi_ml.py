@@ -2,8 +2,9 @@ import os
 import time
 import logging
 from qiskit_aer import Aer
-from qiskit import QuantumCircuit, execute # type: ignore
-from stable_baselines3 import PPO # type: ignore
+from qiskit import QuantumCircuit, execute  # type: ignore
+from stable_baselines3 import PPO  # type: ignore
+from quantum_asi_program.ai.advanced_AI_code_refactoring import refactor_code
 
 class AdaptiveQuantumASI:
     def __init__(self, repo_dir="tech_repo", log_file="quantum_asi.log"):
@@ -98,6 +99,9 @@ class AdaptiveQuantumASI:
 
         # Apply reinforcement learning optimization
         final_optimized_code = self.rl_optimize(quantum_optimized_code)
+
+        # Apply AI refactoring for final polish
+        final_optimized_code = refactor_code(final_optimized_code)
 
         # Save the upgraded code
         upgraded_file = file_path.replace(".py", "_upgraded.py")
