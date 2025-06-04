@@ -1,4 +1,5 @@
-from qiskit import Aer, transpile, assemble
+from qiskit_aer import Aer
+from qiskit import transpile, assemble
 from qiskit.circuit.library import TwoLocal
 from qiskit.algorithms import VQE
 from qiskit.algorithms.optimizers import COBYLA

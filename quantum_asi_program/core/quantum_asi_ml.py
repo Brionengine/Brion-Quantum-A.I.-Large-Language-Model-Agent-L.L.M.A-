@@ -1,7 +1,8 @@
 import os
 import time
 import logging
-from qiskit import Aer, QuantumCircuit, execute # type: ignore
+from qiskit_aer import Aer
+from qiskit import QuantumCircuit, execute # type: ignore
 from stable_baselines3 import PPO # type: ignore
 
 class AdaptiveQuantumASI:

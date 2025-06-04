@@ -1,6 +1,7 @@
 # zero_noise_extrapolation.py
 
-from qiskit import Aer, execute, transpile
+from qiskit_aer import Aer
+from qiskit import execute, transpile
 from qiskit.providers.aer.noise import NoiseModel
 from qiskit.algorithms import Extrapolator
 

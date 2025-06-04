@@ -4,6 +4,7 @@ networkx>=2.6.0
 psutil>=5.8.0
 cryptography>=3.4.0
 qiskit>=0.34.0
+qiskit-aer
 torch>=1.9.0
 scikit-learn>=0.24.0
 pandas>=1.3.0
