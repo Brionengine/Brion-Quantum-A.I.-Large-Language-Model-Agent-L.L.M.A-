@@ -1,7 +1,12 @@
 class MetaReasoner:
+    """Toy meta reasoning module that slightly rewrites ideas."""
+
     def __init__(self):
-        pass
-        
-    def refine(self, idea):
-        # Basic implementation that returns the input idea
-        return idea 
+        """Initialize with an internal history of refinements."""
+        self.history = []
+
+    def refine(self, idea: str) -> str:
+        """Return a refined idea by appending a marker and storing it."""
+        refined = f"{idea}-refined"
+        self.history.append(refined)
+        return refined

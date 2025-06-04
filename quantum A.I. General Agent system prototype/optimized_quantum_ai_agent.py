@@ -3,7 +3,8 @@
 
 class QuantumErrorHandling:
     def __init__(self):
-        pass
+        """Placeholder for future error-handling configuration."""
+        self.enabled = True
 
     @staticmethod
     def apply_error_correction(qc):
@@ -81,23 +82,24 @@ class HybridQuantumAIWithLogging:
 
 class NLPInterface:
     def __init__(self):
-        pass
-
-    def parse_user_input(self, user_input):
-        task_patterns = {
+        """Compile regex patterns used for parsing commands."""
+        self.task_patterns = {
             "train_classical": re.compile(r"train classical model", re.IGNORECASE),
             "predict_classical": re.compile(r"predict using classical model", re.IGNORECASE),
             "run_grovers": re.compile(r"run grover['’]s algorithm with (\d+)-qubit", re.IGNORECASE),
-            "run_qaoa": re.compile(r"run qaoa optimization on (.+)", re.IGNORECASE)
+            "run_qaoa": re.compile(r"run qaoa optimization on (.+)", re.IGNORECASE),
         }
-        if task_patterns["train_classical"].search(user_input):
+
+    def parse_user_input(self, user_input):
+        patterns = self.task_patterns
+        if patterns["train_classical"].search(user_input):
             return "train_classical", None
-        elif task_patterns["predict_classical"].search(user_input):
+        elif patterns["predict_classical"].search(user_input):
             return "predict_classical", None
-        elif match := task_patterns["run_grovers"].search(user_input):
+        elif match := patterns["run_grovers"].search(user_input):
             num_qubits = int(match.group(1))
             return "run_grovers", {"num_qubits": num_qubits}
-        elif match := task_patterns["run_qaoa"].search(user_input):
+        elif match := patterns["run_qaoa"].search(user_input):
             problem_desc = match.group(1)
             return "run_qaoa", {"problem": problem_desc}
         return "unknown", None
