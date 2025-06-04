@@ -1,7 +1,11 @@
 class InfiniteMind:
+    """Stores and expands thoughts in a trivial way."""
+
     def __init__(self):
-        pass
-        
+        """Initialize an internal list of thoughts."""
+        self.thoughts = []
+
     def expand(self, thoughts):
-        # Basic implementation that returns the input thoughts
-        return thoughts 
+        """Add thoughts to memory and return all collected thoughts."""
+        self.thoughts.extend(thoughts if isinstance(thoughts, list) else [thoughts])
+        return self.thoughts
