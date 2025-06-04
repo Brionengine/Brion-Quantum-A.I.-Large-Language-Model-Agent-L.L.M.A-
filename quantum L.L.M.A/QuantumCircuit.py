@@ -1,6 +1,7 @@
 # variational_circuit.py
 
-from qiskit import QuantumCircuit, Aer, transpile
+from qiskit_aer import Aer
+from qiskit import QuantumCircuit, transpile
 from qiskit.circuit import Parameter
 from qiskit.opflow import Z, StateFn, CircuitSampler, AerPauliExpectation
 

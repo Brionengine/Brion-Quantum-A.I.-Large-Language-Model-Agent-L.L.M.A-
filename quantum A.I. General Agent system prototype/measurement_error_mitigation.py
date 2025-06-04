@@ -1,6 +1,7 @@
 # measurement_error_mitigation.py
 
-from qiskit import Aer, execute, QuantumCircuit
+from qiskit_aer import Aer
+from qiskit import execute, QuantumCircuit
 from qiskit.utils.mitigation import CompleteMeasFitter, TensoredMeasFitter
 
 def measurement_error_mitigation(qc, shots=1024):

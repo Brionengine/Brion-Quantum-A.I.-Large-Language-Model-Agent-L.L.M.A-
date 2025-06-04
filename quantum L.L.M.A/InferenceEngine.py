@@ -1,6 +1,7 @@
 # quantum_inference_engine.py
 
-from qiskit import Aer, transpile, QuantumCircuit
+from qiskit_aer import Aer
+from qiskit import transpile, QuantumCircuit
 from qiskit.providers.aer import AerSimulator
 from qiskit.circuit import Parameter
 

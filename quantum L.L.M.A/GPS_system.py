@@ -1,4 +1,5 @@
-from qiskit import QuantumCircuit, Aer, transpile, execute
+from qiskit_aer import Aer
+from qiskit import QuantumCircuit, transpile, execute
 
 class QuantumSecurity:
     def __init__(self):

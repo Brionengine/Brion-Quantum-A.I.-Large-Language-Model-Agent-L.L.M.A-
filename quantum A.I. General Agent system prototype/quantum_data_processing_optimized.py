@@ -1,6 +1,7 @@
 # quantum_data_processing.py
 
-from qiskit import execute, Aer
+from qiskit_aer import Aer
+from qiskit import execute
 
 def process_encoded_data(qc):
     # Use Aer's statevector simulator to process the encoded quantum data

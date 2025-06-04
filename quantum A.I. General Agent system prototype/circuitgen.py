@@ -1,4 +1,5 @@
-from qiskit import QuantumCircuit, Aer, execute
+from qiskit_aer import Aer
+from qiskit import QuantumCircuit, execute
 
 def generate_grovers_algorithm_circuit(n_qubits):
     """Generate a simple Grover's search algorithm circuit."""

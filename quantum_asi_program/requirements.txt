@@ -3,6 +3,7 @@ flask
 matplotlib
 transformers
 qiskit
+qiskit-aer
 pylint
 pytest
 concurrent-log-handler

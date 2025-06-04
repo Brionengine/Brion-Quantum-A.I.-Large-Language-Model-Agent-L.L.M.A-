@@ -1,6 +1,7 @@
 # quantum_algorithms.py
 
-from qiskit import QuantumCircuit, Aer, execute, transpile
+from qiskit_aer import Aer
+from qiskit import QuantumCircuit, execute, transpile
 
 def grovers_algorithm(n_qubits):
     """

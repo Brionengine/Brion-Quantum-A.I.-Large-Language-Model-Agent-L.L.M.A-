@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
-from qiskit import Aer, QuantumCircuit, transpile
+from qiskit_aer import Aer
+from qiskit import QuantumCircuit, transpile
 from qiskit.circuit.library import TwoLocal
 from qiskit.algorithms import VQE
 from qiskit.algorithms.optimizers import COBYLA

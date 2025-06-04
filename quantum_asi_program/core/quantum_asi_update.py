@@ -2,7 +2,8 @@ import os
 import subprocess
 import time
 import logging
-from qiskit import QuantumCircuit, Aer, execute # type: ignore
+from qiskit_aer import Aer
+from qiskit import QuantumCircuit, execute # type: ignore
 
 class MorningStarQuantumASI:
     def __init__(self, repo_dir="tech_repo", log_file="infinite_upgrades.log"):

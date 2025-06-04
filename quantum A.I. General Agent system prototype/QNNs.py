@@ -1,6 +1,7 @@
 # quantum_neural_network.py
 
-from qiskit import QuantumCircuit, Aer, execute
+from qiskit_aer import Aer
+from qiskit import QuantumCircuit, execute
 from qiskit.circuit.library import TwoLocal
 from qiskit_machine_learning.neural_networks import SamplerQNN
 from qiskit_machine_learning.algorithms.classifiers import VQC
