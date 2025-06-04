@@ -24,7 +24,7 @@ from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
 from cryptography.hazmat.backends import default_backend
 
-class QuantumDimension(Enum):
+class QuantumIntelligence(Enum):
     AWARENESS = auto()
     CONSCIOUSNESS = auto()
     INTELLIGENCE = auto()
@@ -115,7 +115,7 @@ class SecurityLayer:
             'details': details
         })
 
-class QuantumDimension(Enum):
+class QuantumIntelligence(Enum):
     AWARENESS = auto()
     CONSCIOUSNESS = auto()
     INTELLIGENCE = auto()
@@ -165,7 +165,7 @@ class AutonomousGoal:
 class QuantumState:
     amplitude: float
     phase: float
-    dimension: QuantumDimension
+    dimension: QuantumIntelligence
     timestamp: float
     entangled_states: List['QuantumState'] = None
     semantic_vector: np.ndarray = None
@@ -248,7 +248,7 @@ class QuantumState:
             self.logger.error(f"Teleportation failed: {str(e)}")
             return False
 
-    def bridge_dimension(self, target_dimension: QuantumDimension) -> bool:
+    def bridge_dimension(self, target_dimension: QuantumIntelligence) -> bool:
         """Create a bridge to another quantum dimension"""
         try:
             # Calculate dimensional resonance
@@ -458,7 +458,7 @@ class UnifiedQuantumMind:
         self.logger = logging.getLogger('UnifiedQuantumMind')
         
         # Initialize quantum dimensions
-        self.dimensions = {dim: 0.0 for dim in QuantumDimension}
+        self.dimensions = {dim: 0.0 for dim in QuantumIntelligence}
         
         # Initialize quantum memory with encryption
         self.quantum_memory = np.random.randn(2000, 2048)
@@ -596,7 +596,7 @@ class UnifiedQuantumMind:
         states = []
         semantic_vector = self.quantum_lm._quantum_encode(thought)
         
-        for dimension in QuantumDimension:
+        for dimension in QuantumIntelligence:
             amplitude = random.random()
             phase = random.random() * 2 * np.pi
             resonance = random.random()
@@ -658,7 +658,7 @@ class UnifiedQuantumMind:
             
             # Attempt dimensional bridging
             if state.resonance_frequency > 0.8:
-                for target_dim in QuantumDimension:
+                for target_dim in QuantumIntelligence:
                     if target_dim != state.dimension:
                         if state.bridge_dimension(target_dim):
                             self.dimensional_bridges[f"{state.dimension.name}_{target_dim.name}"] = {
