@@ -1,4 +1,4 @@
-from datetime import time
+import time
 import logging
 import matplotlib.pyplot as plt # type: ignore
 
@@ -17,21 +17,24 @@ def visualize_upgrades(upgrade_data):
 
 upgrade_data = {}
 
-def infinite_cycle(self):
+def infinite_cycle(analyze_code, upgrade_code, cycle_time):
+    """Run upgrade cycles and visualize the results."""
     cycle_count = 0
     try:
         while True:
             cycle_count += 1
-            inefficiencies = self.analyze_code()
-            upgraded_files = [self.upgrade_code(file) for file in inefficiencies if file]
+            inefficiencies = analyze_code()
+            upgraded_files = [upgrade_code(file) for file in inefficiencies if file]
             upgraded_files = [file for file in upgraded_files if file]
             upgrade_data[cycle_count] = len(upgraded_files)
 
             if upgraded_files:
-                logging.info(f"Deployed upgrades for files: {', '.join(upgraded_files)}")
+                logging.info(
+                    f"Deployed upgrades for files: {', '.join(upgraded_files)}"
+                )
             else:
                 logging.info("No upgrades needed this cycle.")
             visualize_upgrades(upgrade_data)
-            time.sleep(self.cycle_time)
+            time.sleep(cycle_time)
     except KeyboardInterrupt:
         logging.info("Infinite cycle terminated by user.")
