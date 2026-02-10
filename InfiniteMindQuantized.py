@@ -16,7 +16,7 @@ class InfiniteMind:
     - Quantized memory with importance weighting
     """
 
-    VERSION = "2.0.0"
+    VERSION = "2.1.33"
     MAX_THOUGHT_DEPTH = 10
 
     def __init__(self, capacity: int = 10000):

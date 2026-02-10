@@ -14,7 +14,7 @@ class QuantumAgent:
     adaptive learning, and quantum-inspired decision making.
     """
 
-    VERSION = "2.0.0"
+    VERSION = "2.1.33"
 
     def __init__(self, memory=None):
         """Create the agent with a reference to a memory list."""
