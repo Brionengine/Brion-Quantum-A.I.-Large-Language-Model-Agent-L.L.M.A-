@@ -1,9 +1,18 @@
+from __future__ import annotations
+
 import os
 import subprocess
 import time
 import logging
-from qiskit_aer import Aer
-from qiskit import QuantumCircuit, execute # type: ignore
+try:
+    from qiskit_aer import Aer
+except ImportError:  # optional dependency: pip install qiskit-aer
+    Aer = None
+try:
+    from qiskit import QuantumCircuit, transpile  # type: ignore
+except ImportError:  # optional dependency: pip install qiskit
+    QuantumCircuit = None
+    transpile = None
 
 class MorningStarQuantumASI:
     def __init__(self, repo_dir="tech_repo", log_file="infinite_upgrades.log"):
@@ -38,7 +47,7 @@ class MorningStarQuantumASI:
         circuit.cx(0, 1)  # Entangle qubits
         circuit.measure_all()
         simulator = Aer.get_backend("qasm_simulator")
-        result = execute(circuit, simulator, shots=1024).result()
+        result = simulator.run(transpile(circuit, simulator), shots=1024).result()
         counts = result.get_counts()
         # Quantum randomness to select optimization paths
         if int(counts.get("00", 0)) > 500:

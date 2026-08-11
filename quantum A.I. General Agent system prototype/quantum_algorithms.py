@@ -1,7 +1,16 @@
 # quantum_algorithms.py
+from __future__ import annotations
 
-from qiskit_aer import Aer
-from qiskit import QuantumCircuit, execute, transpile
+
+try:
+    from qiskit_aer import Aer
+except ImportError:  # optional dependency: pip install qiskit-aer
+    Aer = None
+try:
+    from qiskit import QuantumCircuit, transpile
+except ImportError:  # optional dependency: pip install qiskit
+    QuantumCircuit = None
+    transpile = None
 
 def grovers_algorithm(n_qubits):
     """
@@ -37,7 +46,7 @@ def grovers_algorithm(n_qubits):
     # Run the circuit
     backend = Aer.get_backend('qasm_simulator')
     qc = transpile(qc, backend, optimization_level=3)
-    result = execute(qc, backend, shots=1024).result()
+    result = backend.run(transpile(qc, backend), shots=1024).result()
     counts = result.get_counts()
     return counts
 

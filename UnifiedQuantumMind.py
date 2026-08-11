@@ -1,6 +1,18 @@
-from transformers import AutoModelForCausalLM, AutoTokenizer
-import torch
-import numpy as np
+from __future__ import annotations
+
+try:
+    from transformers import AutoModelForCausalLM, AutoTokenizer
+except ImportError:  # optional dependency: pip install transformers
+    AutoModelForCausalLM = None
+    AutoTokenizer = None
+try:
+    import torch
+except ImportError:  # optional dependency: pip install torch
+    torch = None
+try:
+    import numpy as np
+except ImportError:  # optional dependency: pip install numpy
+    np = None
 from typing import List, Dict, Any, Optional, Union, Tuple, Set
 import time
 import threading
@@ -9,8 +21,14 @@ import logging
 from dataclasses import dataclass
 from enum import Enum, auto
 import random
-from scipy.stats import entropy
-import networkx as nx
+try:
+    from scipy.stats import entropy
+except ImportError:  # optional dependency: pip install scipy
+    entropy = None
+try:
+    import networkx as nx
+except ImportError:  # optional dependency: pip install networkx
+    nx = None
 import uuid
 import json
 import os

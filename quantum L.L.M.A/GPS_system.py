@@ -1,5 +1,14 @@
-from qiskit_aer import Aer
-from qiskit import QuantumCircuit, transpile, execute
+from __future__ import annotations
+
+try:
+    from qiskit_aer import Aer
+except ImportError:  # optional dependency: pip install qiskit-aer
+    Aer = None
+try:
+    from qiskit import QuantumCircuit, transpile
+except ImportError:  # optional dependency: pip install qiskit
+    QuantumCircuit = None
+    transpile = None
 
 class QuantumSecurity:
     def __init__(self):
@@ -13,7 +22,7 @@ class QuantumSecurity:
 
     def check_entanglement_integrity(self):
         transpiled_circuit = transpile(self.qc, self.backend)
-        result = execute(transpiled_circuit, self.backend).result()
+        result = self.backend.run(transpile(transpiled_circuit, self.backend)).result()
         counts = result.get_counts()
         if '00' in counts or '11' in counts:
             print("Quantum GPS integrity is intact.")

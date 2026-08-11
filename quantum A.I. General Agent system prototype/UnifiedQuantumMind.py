@@ -1,4 +1,6 @@
 # UnifiedQuantumMind.py
+from __future__ import annotations
+
 
 from InfiniteMindQuantized import InfiniteMind
 from meta_reasoning import MetaReasoner
@@ -12,7 +14,10 @@ from idea_generator import IdeaEngine
 from experience_replay import MemoryReplay
 from logic_engine import LogicCore
 from agent import QuantumAgent
-import numpy as np
+try:
+    import numpy as np
+except ImportError:  # optional dependency: pip install numpy
+    np = None
 from typing import List, Dict, Any, Optional, Union, Tuple, Set, Callable
 import time
 import threading
@@ -23,11 +28,23 @@ import hashlib
 from dataclasses import dataclass
 from enum import Enum, auto
 import random
-from scipy.stats import entropy
-from scipy.spatial.distance import cosine
-import networkx as nx
+try:
+    from scipy.stats import entropy
+except ImportError:  # optional dependency: pip install scipy
+    entropy = None
+try:
+    from scipy.spatial.distance import cosine
+except ImportError:  # optional dependency: pip install scipy
+    cosine = None
+try:
+    import networkx as nx
+except ImportError:  # optional dependency: pip install networkx
+    nx = None
 import os
-import psutil
+try:
+    import psutil
+except ImportError:  # optional dependency: pip install psutil
+    psutil = None
 import subprocess
 import platform
 import socket

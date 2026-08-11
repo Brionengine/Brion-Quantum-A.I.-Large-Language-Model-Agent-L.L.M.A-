@@ -1,5 +1,14 @@
-from qiskit_aer import Aer
-from qiskit import QuantumCircuit, execute
+from __future__ import annotations
+
+try:
+    from qiskit_aer import Aer
+except ImportError:  # optional dependency: pip install qiskit-aer
+    Aer = None
+try:
+    from qiskit import QuantumCircuit, transpile
+except ImportError:  # optional dependency: pip install qiskit
+    QuantumCircuit = None
+    transpile = None
 
 def generate_grovers_algorithm_circuit(n_qubits):
     """Generate a simple Grover's search algorithm circuit."""
@@ -27,6 +36,6 @@ def generate_grovers_algorithm_circuit(n_qubits):
 # Function to execute the quantum circuit
 def run_quantum_circuit(qc):
     simulator = Aer.get_backend('qasm_simulator')
-    result = execute(qc, backend=simulator).result()
+    result = simulator.run(transpile(qc, simulator)).result()
     counts = result.get_counts()
     return counts

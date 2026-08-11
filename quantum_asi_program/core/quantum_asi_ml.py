@@ -1,9 +1,21 @@
+from __future__ import annotations
+
 import os
 import time
 import logging
-from qiskit_aer import Aer
-from qiskit import QuantumCircuit, execute  # type: ignore
-from stable_baselines3 import PPO  # type: ignore
+try:
+    from qiskit_aer import Aer
+except ImportError:  # optional dependency: pip install qiskit-aer
+    Aer = None
+try:
+    from qiskit import QuantumCircuit, transpile  # type: ignore
+except ImportError:  # optional dependency: pip install qiskit
+    QuantumCircuit = None
+    transpile = None
+try:
+    from stable_baselines3 import PPO  # type: ignore
+except ImportError:  # optional dependency: pip install stable-baselines3
+    PPO = None
 from quantum_asi_program.ai.advanced_AI_code_refactoring import refactor_code
 
 class AdaptiveQuantumASI:
@@ -40,7 +52,7 @@ class AdaptiveQuantumASI:
         circuit.cx(0, 1)  # Entangle qubits
         circuit.measure_all()
         simulator = Aer.get_backend("qasm_simulator")
-        result = execute(circuit, simulator, shots=1024).result()
+        result = simulator.run(transpile(circuit, simulator), shots=1024).result()
         counts = result.get_counts()
         return counts
 
